@@ -2,7 +2,7 @@ package generics;
 
 import java.util.Random;
 /*
- * Travelling Salesman Problem Genetic Algorithm Implementation 
+ * Travelling Salesman Problem Genetic Algorithm Implementation (Limit to N=9 Nodes)
  * @author :Ajay Badrinath
  * @since  :2023-02-20
  * */
