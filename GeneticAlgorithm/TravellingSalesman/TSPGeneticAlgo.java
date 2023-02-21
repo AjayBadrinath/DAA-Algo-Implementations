@@ -1,10 +1,20 @@
 package generics;
 
 import java.util.Random;
-
+/*
+ * Travelling Salesman Problem Genetic Algorithm Implementation 
+ * @author :Ajay Badrinath
+ * @since  :2023-02-20
+ * */
 
 
 //Assume A complete Graph where there exist H Path Goal: Minimise the cost
+/*
+ * Linked List To Store The nodes which has the Path and Its Corresponding Cost
+ * 
+ * Class Consist of helper functions to create node ,delete node ,insert node , lengthof list
+ * 
+ * */
 class linkedlist{
 	Node <?>head;
 	static class Node<T extends Number>{
@@ -64,6 +74,12 @@ class linkedlist{
 		}
 	}
 }
+/*
+ * Sorting Function based off weights/ fitness ,
+ * Sorts the Linked List  using quicksort algo (O(nlogn))
+ *
+ * 
+ * */
 class QuickSort{
 	 //F arr[];
 	 linkedlist.Node<?> head;
@@ -114,10 +130,20 @@ class QuickSort{
 	
 }
 
-
+/*
+ * Class defining the Genetic Algorithm implementation 
+ * Consist of Member Functions to 
+ * Compute Cost,Fitness ,Count Substring
+ * Init Func like genStr ,Set Gene generatePopulationPool,InitializePopulationPool
+ * Main Func like Mutation ,crossover ,selections and Run Epochs
+ * 
+ * */
 public class TSPGeneticAlgo {
 	private static  String genepool="";
 	 static String[] PopulationPool;
+	 /*
+	  * Function to compute cost  based off  Adjacency Matrix Provided   
+	  * */
 	  int ComputeCost(int [][] arr,String sequence) {
 		//System.out.println('k');
 		int cost=0;
@@ -127,6 +153,11 @@ public class TSPGeneticAlgo {
 		return cost;
 		
 	}
+	  /*
+	   * Fitness Function Extends the Cost Func 
+	   * Check For Repeated Occurance of Substring k in s[1:len-1] and Penalise the cost accordingly
+	   * 
+	   * */
 	  int Fitness(String sequence,int[][]arr) {
 		int fitness=0;
 		
@@ -139,7 +170,7 @@ public class TSPGeneticAlgo {
 		return ComputeCost(arr,sequence)+fitness*100;
 		
 	}
-	
+	/*Count occurance of kth char*/
 	public  int  helperCount(String sequence,char subseq) {
 		int c=0;
 		for(int i =0;i<sequence.length();i++) {
@@ -149,6 +180,7 @@ public class TSPGeneticAlgo {
 		}
 		return c;
 	}
+	/*Initialization Functions*/
 	public  void SetGene(int[][]arr) {
 		for(int i=0;i<arr.length;i++) {
 			genepool+=((i+1));
@@ -177,6 +209,9 @@ public class TSPGeneticAlgo {
 		}
 		PopulationPool=construct;
 	}
+	/*
+	 * Encapsulate All the Above init Functions under one function
+	 * */
 	public  linkedlist InitializePopulationPool(int PopulationSize,int [][]graph) {
 		SetGene(graph);
 		generatePopulationPool(PopulationSize);
@@ -189,6 +224,7 @@ public class TSPGeneticAlgo {
 		return l;
 		
 	}
+	/*Cross over func*/
 	public  String[] crossover(String parent1,String parent2) {
 		int half=parent1.length()/2;
 		
@@ -199,6 +235,7 @@ public class TSPGeneticAlgo {
 		ret[1]=parent2.replace(parent1.charAt(3), parent2.charAt(2));
 		return ret;
 	}
+	/*Swap kth random char with another*/
 	public  String Mutation(String chromosome,float MutationRate) {
 		Random r=new Random();
 		int MutateQty=Math.round( MutationRate*chromosome.length());
@@ -208,6 +245,7 @@ public class TSPGeneticAlgo {
 		}
 			return chromosome;
 	}
+	/*Sort and select based off fitness*/
 	public   void selection(float selectionrate,linkedlist l) {
 		
 	    int selectionQty=Math.round(selectionrate*l.length(l));
@@ -218,6 +256,7 @@ public class TSPGeneticAlgo {
 	   
 	    
 	}
+	/*Run the simulation*/
 	public   void runEpochs(linkedlist l,int [][]arr,int generations,float crossoverrate,float mutationrate,float selectionrate) {
 		Random r=new Random();
 		int rs,rs2;
