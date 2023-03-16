@@ -93,9 +93,9 @@ public class distanceVectorRouting {
 	public static void main(String []args) {
 		int inf=45556;
 		int [][] adjacencyMatrix= {{0,2,inf,1},
-									{2,0,3,7},
-									{inf,3,0,11},
-									{1,7,11,0}};
+					   {2,0,3,7},
+					   {inf,3,0,11},
+					   {1,7,11,0}};
 		
 		
 		BellmanFord f= new BellmanFord(adjacencyMatrix,4,0);
