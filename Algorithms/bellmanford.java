@@ -87,7 +87,7 @@ class BellmanFord{
 	}
 	
 }
-public class distanceVectorRouting {
+public class bellmanford {
 	 
 	
 	public static void main(String []args) {
