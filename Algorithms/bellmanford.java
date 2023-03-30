@@ -14,15 +14,12 @@ class BellmanFord{
 		len=arrlen;
 	}
 	List <Integer>vector=new ArrayList <Integer>(len);
-
-	
 	 void initialize() {
 		 for(int i=0;i<len;i++) {
 				
 				vector.add(adjmat[source][i]);
 			}
-		 
-		
+
 	}
 	 void iterate() {
 		 initialize();
@@ -43,16 +40,8 @@ class BellmanFord{
 		 		j++;
 		 		j=j%4;
 		 	}
-		 	for(int i=0;i<len-1;i++) {
-		 		for(int m=0;m<len;m++) {
-		 			//System.out.print(arr1[i][m]+" ");
-		 		}
-		 		//System.out.println();
-		 	}
 		 	
 		 	j=(source+1)%len;
-		 	
-		 	
 		 	for(int i=0;i<len-1;i++) {
 		 		cur=vector.get(j);
 		 		for(int k=0;k<len;k++) {
@@ -60,9 +49,7 @@ class BellmanFord{
 		 				
 						vector.set(k, (cur+arr1[i][k]));
 					}
-		 		}
-		 		
-		 				
+		 		}	
 		 		j++;
 		 		j=j%len;
 		 	}
