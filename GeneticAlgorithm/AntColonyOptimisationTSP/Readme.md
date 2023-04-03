@@ -1,5 +1,9 @@
 ## Output
 
+
+For the Graph topology pls refer the commented section in the java file
+
+
 ![image](https://user-images.githubusercontent.com/92035508/229415372-04d5c1ce-ee24-45ce-9bc9-9fadbf0443cb.png)
 
 
